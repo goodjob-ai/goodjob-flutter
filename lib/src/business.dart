@@ -7,6 +7,7 @@ import 'package:goodjob_language/src/config.dart';
 import 'package:goodjob_language/src/database_helper.dart';
 import 'package:goodjob_language/src/response.dart';
 import 'package:goodjob_language/src/api.dart';
+
 /// 事务管理器
 class GoodJobBusiness {
   /// 初始化单例
@@ -21,6 +22,7 @@ class GoodJobBusiness {
 
   /// 数据库
   DatabaseHelper _databaseHelper = DatabaseHelper.getInstance();
+
   /// 配置
   GoodJobConfig config = GoodJobConfig.getInstances();
 
@@ -74,12 +76,13 @@ class GoodJobBusiness {
   }
 
   /// 获取字典内容
-  Future<List<GoodjobEntity>> getGoodJobData(String id) async {
-    List<GoodjobEntity> _list = new List();
-    ResponseEntity res = await HttpUtil.get(Api.getGoodJobData + id, needToken: true);
+  Future<List<GoodJobEntity>> getGoodJobData(String id) async {
+    List<GoodJobEntity> _list = new List();
+    ResponseEntity res =
+        await HttpUtil.get(Api.getGoodJobData + id, needToken: true);
     if (res.code == 0) {
       (res.data['contents'] as List).forEach((f) {
-        _list.add(GoodjobEntity.fromJson(f));
+        _list.add(GoodJobEntity.fromJson(f));
       });
     } else {
       _list = [];
@@ -92,7 +95,8 @@ class GoodJobBusiness {
     List<LanguageModel> _listLang = new List();
     //写入到缓存的数据
     Map<String, MapCache<String, String>> mapCache = new Map();
-    ResponseEntity res = await HttpUtil.get(Api.getGoodJobData + id, needToken: true);
+    ResponseEntity res =
+        await HttpUtil.get(Api.getGoodJobData + id, needToken: true);
     if (res.code == 0) {
       (res.data as List).forEach((v) {
         LanguageModel languageModel = LanguageModel.fromJson(v);
@@ -112,6 +116,7 @@ class GoodJobBusiness {
 class LanguageModel {
   /// 名称
   String title;
+
   /// 语言
   String lang;
   List<Map<String, dynamic>> listMap;
@@ -124,7 +129,8 @@ class LanguageModel {
       listMap = new List();
       (json["list"] as List).forEach((f) {
         Map<String, dynamic> map = new Map();
-        String keyName = f["u_key"].toString().isEmpty ? f["g_key"] : f["u_key"];
+        String keyName =
+            f["u_key"].toString().isEmpty ? f["g_key"] : f["u_key"];
         map['name'] = keyName;
         map['value'] = f['name'];
         mapCache.set(keyName, f['name']);

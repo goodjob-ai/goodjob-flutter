@@ -15,10 +15,13 @@ class GoodJobConfig {
     mApiSecret = apiSecret;
     tokenKey = token;
   }
+
   /// token
   static String tokenKey = "";
+
   /// api key
   static String mApiKey = '';
+
   /// secret key
   static String mApiSecret = '';
 }

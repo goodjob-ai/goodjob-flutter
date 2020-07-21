@@ -10,32 +10,29 @@ import 'package:goodjob_language/src/api.dart';
 import 'package:goodjob_language/src/log_utils.dart';
 import 'package:goodjob_language/src/response.dart';
 import 'package:goodjob_language/src/config.dart';
-/// 监听当前的网络请求状态，根据状态显示一些必要提醒
 
-/*Options options = Options(
-  // 连接服务器超时时间(毫秒)
-    sendTimeout: 10000,
-    receiveTimeout: 30000,
+/// 监听当前的网络请求状态，根据状态显示一些必要提醒
+BaseOptions _options = new BaseOptions(
+    baseUrl: Api.baseUrl,
+    connectTimeout: 10000,
+    receiveTimeout: 3000,
     headers: {
       "Content-Type": "application/json",
       "Accept": "application/json",
-    });*/
+    });
 
-BaseOptions options =
-    new BaseOptions(baseUrl: Api.baseUrl, connectTimeout: 10000, receiveTimeout: 3000, headers: {
-  "Content-Type": "application/json",
-  "Accept": "application/json",
-});
 ///网络请求工具
 class HttpUtil {
   static Dio _dio;
 
   static getInstance() {
     if (_dio == null) {
-      _dio = new Dio(options);
+      _dio = new Dio(_options);
     }
-    (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
-      client.badCertificateCallback = (X509Certificate cert, String host, int port) {
+    (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) {
 //         if(cert.pem==PEM){ // Verify the certificate
 //            return true;
 //          }
@@ -48,44 +45,47 @@ class HttpUtil {
   /// get
   static Future<ResponseEntity> get(String url,
       {Map<String, dynamic> params, needToken = false}) async {
-    Response response;
-    Dio dio = getInstance();
-    dio.interceptors.add(new ExInterceptor());
+    Response _response;
+    Dio _dio = getInstance();
+    _dio.interceptors.add(new ExInterceptor());
     //print("url == " + url.toString());
-    String timestamp = (DateTime.now().millisecondsSinceEpoch ~/ 1000).toString();
+    String timestamp =
+        (DateTime.now().millisecondsSinceEpoch ~/ 1000).toString();
     //从服务器获取时间戳
-    var timeData = await dio.get("https://xmtest.anmaicloud.com/time");
+    var timeData = await _dio.get("https://xmtest.anmaicloud.com/time");
     if (timeData != null && jsonDecode(timeData.toString())["data"] != null) {
       timestamp = jsonDecode(timeData.toString())["data"].toString();
     }
     String keyName = 'tokenGET/$url$timestamp';
     //加密
-    var hmacSha256 = new Hmac(sha256, utf8.encode(GoodJobConfig.mApiSecret)); // HMAC-SHA256
-    var digest = hmacSha256.convert(utf8.encode(keyName));
+    var _macSha256 = new Hmac(sha256, utf8.encode(GoodJobConfig.mApiSecret));
+    var digest = _macSha256.convert(utf8.encode(keyName));
     LogUtil.v('params:$keyName\sign:' +
         digest.toString() +
         '\napikey:${GoodJobConfig.mApiKey}\n'
             'timestamp:$timestamp');
     if (needToken) {
 //      options.headers['Authorization'] = "Bearer " + GoodJobConfig.tokenKey;
-      options.headers['ApiKey'] = GoodJobConfig.mApiKey;
-      options.headers['timestamp'] = timestamp;
-      options.headers['sign'] = digest;
+      _options.headers['ApiKey'] = GoodJobConfig.mApiKey;
+      _options.headers['timestamp'] = timestamp;
+      _options.headers['sign'] = digest;
     }
-    ResponseEntity entity;
+    ResponseEntity _entity;
     try {
-      response = await dio.get(url,
-          queryParameters: params, options: buildCacheOptions(Duration(days: 1)));
-      if (response.statusCode == 200) {
-        entity = ResponseEntity.fromJson(jsonDecode(response.toString()));
+      _response = await _dio.get(url,
+          queryParameters: params,
+          options: buildCacheOptions(Duration(days: 1)));
+      if (_response.statusCode == 200) {
+        _entity = ResponseEntity.fromJson(jsonDecode(_response.toString()));
       } else {
-        entity = new ResponseEntity(code: -1, status: "服务器错误:${response.statusMessage}");
+        _entity = new ResponseEntity(
+            code: -1, status: "服务器错误:${_response.statusMessage}");
       }
     } on DioError catch (e) {
-      entity = new ResponseEntity(code: -1, status: "请求出错：${e.toString()}");
+      _entity = new ResponseEntity(code: -1, status: "请求出错：${e.toString()}");
     }
-    LogUtil.v("${Api.baseUrl}$url------" + entity.toString());
-    return entity;
+    LogUtil.v("${Api.baseUrl}$url------" + _entity.toString());
+    return _entity;
   }
 
   /// post
@@ -95,22 +95,23 @@ class HttpUtil {
   ) async {
     LogUtil.v(params.toString());
     LogUtil.v("url == " + url.toString());
-    Response response;
-    Dio dio = getInstance();
-    dio.interceptors.add(new ExInterceptor());
-    ResponseEntity entity;
+    Response _response;
+    Dio _dio = getInstance();
+    _dio.interceptors.add(new ExInterceptor());
+    ResponseEntity _entity;
     try {
-      response = await dio.get(url, queryParameters: params);
-      if (response.statusCode == 200) {
-        entity = ResponseEntity.fromJson(jsonDecode(response.toString()));
+      _response = await _dio.get(url, queryParameters: params);
+      if (_response.statusCode == 200) {
+        _entity = ResponseEntity.fromJson(jsonDecode(_response.toString()));
       } else {
-        entity = new ResponseEntity(code: -1, status: "服务器错误:${response.statusMessage}");
+        _entity = new ResponseEntity(
+            code: -1, status: "服务器错误:${_response.statusMessage}");
       }
     } on DioError catch (e) {
-      entity = new ResponseEntity(code: -1, status: "请求出错：${e.toString()}");
+      _entity = new ResponseEntity(code: -1, status: "请求出错：${e.toString()}");
     }
-    LogUtil.v(entity.toString());
-    return entity;
+    LogUtil.v(_entity.toString());
+    return _entity;
   }
 }
 

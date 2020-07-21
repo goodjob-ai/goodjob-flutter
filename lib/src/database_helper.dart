@@ -4,14 +4,18 @@ import 'package:goodjob_language/src/log_utils.dart';
 import 'package:path/path.dart';
 import 'package:quiver/cache.dart';
 import 'package:sqflite/sqflite.dart';
+
 ///数据库辅助工具
 class DatabaseHelper {
   Database _database;
+
   /// 路径
   String path;
+
   /// 表名 根据语言多少种创建几个
   String tableName = '';
   static DatabaseHelper _databaseHelper;
+
   /// 存储
   Map<String, MapCache<String, String>> _map;
 
@@ -36,13 +40,14 @@ class DatabaseHelper {
     if (_database == null || !_database.isOpen) {
       var databasesPath = await getDatabasesPath();
       String path = join(databasesPath, 'demo.db');
-      _database = await openDatabase(path, version: 1, onCreate: (Database db, int version) async {
+      _database = await openDatabase(path, version: 1,
+          onCreate: (Database db, int version) async {
         //几种语言就建几个表
         list.forEach((v) async {
           String name = v.lang;
           tableName = name;
-//          debugPrint("tableName:" + tableName.toString());
-          await db.execute('CREATE TABLE $name (id INTEGER PRIMARY KEY, name TEXT, value INTEGER)');
+          await db.execute(
+              'CREATE TABLE $name (id INTEGER PRIMARY KEY, name TEXT, value INTEGER)');
         });
       });
       _map = new Map();
@@ -91,7 +96,9 @@ class DatabaseHelper {
 //    debugPrint("queryValue:$nameKey,$tableName");FF
     try {
       List<Map> maps = await _database.query(tableName,
-          columns: ['name', 'value'], where: '"name" = ?', whereArgs: [nameKey]);
+          columns: ['name', 'value'],
+          where: '"name" = ?',
+          whereArgs: [nameKey]);
       return maps.first['value'];
     } catch (e) {
       LogUtil.e("Translation Error !");

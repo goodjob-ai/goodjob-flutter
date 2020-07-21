@@ -1,9 +1,11 @@
 ///语言
-class LanguageEntity{
+class LanguageEntity {
   /// icon url
   String icoUrl;
+
   /// standardMsg
   String standardMsg;
+
   /// standardCode
   String standardCode;
 
@@ -14,5 +16,4 @@ class LanguageEntity{
     standardMsg = json['StandardMsg'];
     standardCode = json['StandardCode'].toString().replaceFirst("-", "");
   }
-
 }

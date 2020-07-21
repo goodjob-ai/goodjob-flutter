@@ -1,12 +1,13 @@
 /// 请求结果
-class ResponseEntity{
+class ResponseEntity {
   /// code
   int code;
+
   /// result data
   var data;
+
   /// status message
   String status;
-
 
   ResponseEntity({this.code, this.data, this.status});
 
@@ -20,6 +21,4 @@ class ResponseEntity{
   String toString() {
     return 'ResponseEntity{code: $code, data: $data, status: $status}';
   }
-
-
 }

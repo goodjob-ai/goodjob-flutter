@@ -2,8 +2,10 @@
 class LogUtil {
   /// common_utils
   static const String _TAG_DEF = "###common_utils###";
+
   /// 是否是debug模式,true: log v 不输出.
   static bool debuggable = false;
+
   /// tag
   static String _mTAG = _TAG_DEF;
 
@@ -24,6 +26,7 @@ class LogUtil {
       _printLog(tag, '  v  ', object);
     }
   }
+
   /// 输出日志
   static void _printLog(String tag, String stag, Object object) {
     String da = object.toString();
