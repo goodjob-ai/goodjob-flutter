@@ -1,3 +1,4 @@
+///日志工具
 class LogUtil {
   static const String _TAG_DEF = "###common_utils###";
 

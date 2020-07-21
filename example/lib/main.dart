@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _requestPermission();
   }
 
+  ///初始化sdk
   _requestPermission() async {
    var res =  await _business.initSDK(
         apiKey: "b59f1ecd-a92a-4f3f-9340-fcaaef411bd1",
@@ -77,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  ///语言选择
   _showPopup() async {
     var v = await showMenu(
         context: context,

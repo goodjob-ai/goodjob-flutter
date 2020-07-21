@@ -1,3 +1,4 @@
+///语言列表
 class LanguageListEntity {
 	int code;
 	LanguageListData data;

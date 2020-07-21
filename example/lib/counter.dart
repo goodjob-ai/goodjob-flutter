@@ -47,7 +47,7 @@ class Counter with ChangeNotifier, DiagnosticableTreeMixin {
   int _count = 0;
 
   get count => _count; //3
-  //在这里初始化所有(切换语言后必须调用)
+  //在这里初始化所有(切换语言后必须调用switchLanguage)
   void initCounter({String lang}) async {
     GoodJobBusiness _business = GoodJobBusiness.getInstance();
     if (lang != null) {

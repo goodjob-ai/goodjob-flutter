@@ -1,3 +1,4 @@
+///配置
 class GoodJobConfig {
   static GoodJobConfig config;
 
@@ -8,6 +9,7 @@ class GoodJobConfig {
     return config;
   }
 
+  ///初始化
   initAuth({apiKey = "", apiSecret = "", token = ""}) {
     mApiKey = apiKey;
     mApiSecret = apiSecret;

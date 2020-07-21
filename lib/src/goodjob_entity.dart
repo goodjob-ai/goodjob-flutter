@@ -1,3 +1,4 @@
+///翻译
 class GoodjobEntity {
 	String contentDoc;
 	String contentLangs;

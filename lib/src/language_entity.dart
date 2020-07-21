@@ -1,3 +1,4 @@
+///语言
 class LanguageEntity{
   String icoUrl;
   String standardMsg;

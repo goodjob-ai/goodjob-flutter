@@ -7,7 +7,7 @@ import 'package:goodjob_flutter/src/log_utils.dart';
 import 'package:path/path.dart';
 import 'package:quiver/cache.dart';
 import 'package:sqflite/sqflite.dart';
-
+///数据库辅助工具
 class DatabaseHelper {
   Database _database;
   String keyName = "keyname";
@@ -24,6 +24,7 @@ class DatabaseHelper {
     return _databaseHelper;
   }
 
+  ///清空数据库
   clearDB() {
     if (_database != null) {
       _database.close();
@@ -68,7 +69,7 @@ class DatabaseHelper {
     }
   }
 
-  //插入一条翻译
+  ///插入一条翻译
   Future insertData(Map<String, dynamic> map, String tableName) async {
     if (_database.isOpen) {
       await _database.transaction((txn) async {
@@ -79,6 +80,7 @@ class DatabaseHelper {
     }
   }
 
+  ///查询所有
   Future queryAll() async {
     if (tableName.isNotEmpty) {
       List<Map<String, dynamic>> records = await _database.query(tableName);
@@ -86,7 +88,7 @@ class DatabaseHelper {
     }
   }
 
-  //获取翻译文字
+  ///获取翻译文字
   Future queryValue(String nameKey) async {
 //    debugPrint("queryValue:$nameKey,$tableName");FF
     try {
@@ -99,6 +101,7 @@ class DatabaseHelper {
     }
   }
 
+  ///从缓存读取
   Future queryCacheValue(String nameKey) async {
     MapCache<String, String> mapCache = new MapCache();
     try {

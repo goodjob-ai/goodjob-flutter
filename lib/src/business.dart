@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:goodjob_flutter/src/goodjob_entity.dart';
 import 'package:goodjob_flutter/src/language_entity.dart';
 import 'package:goodjob_flutter/src/http_util.dart';
@@ -9,7 +7,7 @@ import 'package:goodjob_flutter/src/config.dart';
 import 'package:goodjob_flutter/src/database_helper.dart';
 import 'package:goodjob_flutter/src/response.dart';
 import 'package:goodjob_flutter/src/api.dart';
-
+///事务管理器
 class GoodJobBusiness {
   // ignore: missing_return
   static GoodJobBusiness _goodJobBusiness;
@@ -76,21 +74,22 @@ class GoodJobBusiness {
 
   ///获取字典内容
   Future<List<GoodjobEntity>> getGoodJobData(String id) async {
-    List<GoodjobEntity> list = new List();
+    List<GoodjobEntity> _list = new List();
     ResponseEntity res = await HttpUtil.get(Api.getGoodJobData + id, needToken: true);
     if (res.code == 0) {
       (res.data['contents'] as List).forEach((f) {
-        list.add(GoodjobEntity.fromJson(f));
+        _list.add(GoodjobEntity.fromJson(f));
       });
     } else {
-      list = [];
+      _list = [];
     }
-    return list;
+    return _list;
   }
 
+  ///获取解析内容
   Future<List<LanguageModel>> getGoodJobDataJson(String id) async {
     List<GoodjobEntity> list = new List();
-    List<LanguageModel> listLang = new List();
+    List<LanguageModel> _listLang = new List();
     //写入到缓存的数据
     Map<String, MapCache<String, String>> mapCache = new Map();
     ResponseEntity res = await HttpUtil.get(Api.getGoodJobData + id, needToken: true);
@@ -98,11 +97,11 @@ class GoodJobBusiness {
       (res.data as List).forEach((v) {
         LanguageModel languageModel = LanguageModel.fromJson(v);
         if (languageModel.lang.isNotEmpty) {
-          listLang.add(languageModel);
+          _listLang.add(languageModel);
           mapCache[languageModel.lang] = languageModel.mapCache;
         }
       });
-      return listLang;
+      return _listLang;
     } else {
       return [];
     }

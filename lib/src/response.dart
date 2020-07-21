@@ -1,3 +1,4 @@
+///请求结果
 class ResponseEntity{
   int code;
   var data;
