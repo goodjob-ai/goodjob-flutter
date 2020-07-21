@@ -1,7 +1,7 @@
 name: goodjob_flutter
 description: A new Flutter package - Goodjob.
 version: 1.0.0
-homepage: https://github.com/orth/goodjob_flutter.git
+homepage: https://github.com/goodjob-ai/goodjob-flutter.git
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
