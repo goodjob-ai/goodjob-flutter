@@ -1,7 +1,10 @@
-///请求结果
+/// 请求结果
 class ResponseEntity{
+  /// code
   int code;
+  /// result data
   var data;
+  /// status message
   String status;
 
 

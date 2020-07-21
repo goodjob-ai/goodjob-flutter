@@ -7,12 +7,13 @@ import 'package:sqflite/sqflite.dart';
 ///数据库辅助工具
 class DatabaseHelper {
   Database _database;
-  String keyName = "keyname";
-  String languageValue = "language_value";
+  /// 路径
   String path;
+  /// 表名 根据语言多少种创建几个
   String tableName = '';
   static DatabaseHelper _databaseHelper;
-  Map<String, MapCache<String, String>> map;
+  /// 存储
+  Map<String, MapCache<String, String>> _map;
 
   static getInstance() {
     if (_databaseHelper == null) {
@@ -21,14 +22,14 @@ class DatabaseHelper {
     return _databaseHelper;
   }
 
-  ///清空数据库
+  /// 清空数据库
   clearDB() {
     if (_database != null) {
       _database.close();
     }
   }
 
-  ///数据库初始化
+  /// 数据库初始化
   Future init({id}) async {
     List<LanguageModel> list =
         await GoodJobBusiness().getGoodJobDataJson(id == null ? "10133" : id);
@@ -44,7 +45,7 @@ class DatabaseHelper {
           await db.execute('CREATE TABLE $name (id INTEGER PRIMARY KEY, name TEXT, value INTEGER)');
         });
       });
-      map = new Map();
+      _map = new Map();
       list.forEach((v) {
         //循环插入所有数据
         try {
@@ -55,7 +56,7 @@ class DatabaseHelper {
           LogUtil.v(e.toString());
         }
         String name = v.lang;
-        map[name] = v.mapCache;
+        _map[name] = v.mapCache;
       });
     }
 
@@ -66,7 +67,7 @@ class DatabaseHelper {
     }
   }
 
-  ///插入一条翻译
+  /// 插入一条翻译
   Future insertData(Map<String, dynamic> map, String tableName) async {
     if (_database.isOpen) {
       await _database.transaction((txn) async {
@@ -77,7 +78,7 @@ class DatabaseHelper {
     }
   }
 
-  ///查询所有
+  /// 查询所有
   Future queryAll() async {
     if (tableName.isNotEmpty) {
       List<Map<String, dynamic>> records = await _database.query(tableName);
@@ -85,7 +86,7 @@ class DatabaseHelper {
     }
   }
 
-  ///获取翻译文字
+  /// 获取翻译文字
   Future queryValue(String nameKey) async {
 //    debugPrint("queryValue:$nameKey,$tableName");FF
     try {
@@ -98,11 +99,11 @@ class DatabaseHelper {
     }
   }
 
-  ///从缓存读取
+  /// 从缓存读取
   Future queryCacheValue(String nameKey) async {
     MapCache<String, String> mapCache = new MapCache();
     try {
-      mapCache = map[tableName];
+      mapCache = _map[tableName];
 //      LogUtil.v(mapCache.toString(), tag: "mapCache");
       var v = await mapCache.get(nameKey);
 //      LogUtil.v(v.toString(), tag: "mapCacheValue");
@@ -112,13 +113,4 @@ class DatabaseHelper {
       return 0;
     }
   }
-
-//  Future getTodo(String key) async {
-//    List<Map> maps = await _database.query(tableName,
-//        columns: [columnId, columnDone, columnTitle], where: '$key = ?', whereArgs: [id]);
-//    if (maps.length > 0) {
-//      return Todo.fromMap(maps.first);
-//    }
-//    return null;
-//  }
 }

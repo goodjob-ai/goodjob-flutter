@@ -7,9 +7,9 @@ import 'package:goodjob_language/src/config.dart';
 import 'package:goodjob_language/src/database_helper.dart';
 import 'package:goodjob_language/src/response.dart';
 import 'package:goodjob_language/src/api.dart';
-///事务管理器
+/// 事务管理器
 class GoodJobBusiness {
-  // ignore: missing_return
+  /// 初始化单例
   static GoodJobBusiness _goodJobBusiness;
 
   static getInstance() {
@@ -19,10 +19,12 @@ class GoodJobBusiness {
     return _goodJobBusiness;
   }
 
+  /// 数据库
   DatabaseHelper _databaseHelper = DatabaseHelper.getInstance();
+  /// 配置
   GoodJobConfig config = GoodJobConfig.getInstances();
 
-  ///初始化sdk
+  /// 初始化sdk
   Future initSDK({apiKey = "", apiSecret = "", token = "", id, isDebug}) async {
     config.initAuth(apiKey: apiKey, apiSecret: apiSecret);
     LogUtil.init(isDebug: isDebug, tag: "goodjob:");
@@ -31,19 +33,19 @@ class GoodJobBusiness {
     return r;
   }
 
-  ///获取当前语言
+  /// 获取当前语言
   getLanguage() {
     return _databaseHelper.tableName;
   }
 
-  ///切换语言
+  /// 切换语言
   switchLanguage({language}) {
     _databaseHelper.tableName = language;
   }
 
-  ///翻譯
+  /// 翻譯
   Future interpret(String text) async {
-    //先從緩存拿，失敗后再去數據庫
+    /// 先從緩存拿，失敗后再去數據庫
     var content = await _databaseHelper.queryCacheValue(text);
     if (content == 0) {
       var c = await _databaseHelper.queryValue(text);
@@ -57,7 +59,7 @@ class GoodJobBusiness {
     }
   }
 
-  ///获取国家列表
+  /// 获取国家列表
   Future<List<LanguageEntity>> getLanguageList() async {
     ResponseEntity res = await HttpUtil.get(Api.languageList, needToken: true);
     List<LanguageEntity> list = List();
@@ -68,11 +70,10 @@ class GoodJobBusiness {
     } else {
       list = [];
     }
-//    LanguageListEntity listEntity = LanguageListEntity.fromJson(jsonDecode(res.toString()));
     return list;
   }
 
-  ///获取字典内容
+  /// 获取字典内容
   Future<List<GoodjobEntity>> getGoodJobData(String id) async {
     List<GoodjobEntity> _list = new List();
     ResponseEntity res = await HttpUtil.get(Api.getGoodJobData + id, needToken: true);
@@ -88,7 +89,6 @@ class GoodJobBusiness {
 
   ///获取解析内容
   Future<List<LanguageModel>> getGoodJobDataJson(String id) async {
-    List<GoodjobEntity> list = new List();
     List<LanguageModel> _listLang = new List();
     //写入到缓存的数据
     Map<String, MapCache<String, String>> mapCache = new Map();
@@ -108,8 +108,11 @@ class GoodJobBusiness {
   }
 }
 
+/// 语言实体
 class LanguageModel {
+  /// 名称
   String title;
+  /// 语言
   String lang;
   List<Map<String, dynamic>> listMap;
   MapCache<String, String> mapCache = new MapCache();

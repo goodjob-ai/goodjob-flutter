@@ -45,8 +45,7 @@ class HttpUtil {
     return _dio;
   }
 
-  // get
-  // ignore: missing_return
+  /// get
   static Future<ResponseEntity> get(String url,
       {Map<String, dynamic> params, needToken = false}) async {
     Response response;
@@ -89,7 +88,7 @@ class HttpUtil {
     return entity;
   }
 
-  // post
+  /// post
   static Future<ResponseEntity> post(
     String url,
     Map<String, dynamic> params,
@@ -117,6 +116,7 @@ class HttpUtil {
 
 typedef void ChildContext(BuildContext context);
 
+/// 请求拦截器
 class ExInterceptor extends InterceptorsWrapper {
   BuildContext context;
 

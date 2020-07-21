@@ -1,7 +1,10 @@
-///语言列表
+/// 语言列表
 class LanguageListEntity {
+  /// 状态码
 	int code;
+	/// data
 	LanguageListData data;
+	/// 状态
 	String status;
 
 	LanguageListEntity({this.code, this.data, this.status});
@@ -11,18 +14,9 @@ class LanguageListEntity {
 		data = json['data'] != null ? new LanguageListData.fromJson(json['data']) : null;
 		status = json['status'];
 	}
-
-	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['code'] = this.code;
-		if (this.data != null) {
-      data['data'] = this.data.toJson();
-    }
-		data['status'] = this.status;
-		return data;
-	}
 }
 
+/// 国际化结果列表
 class LanguageListData {
 	List<LanguageListDataLanguagelist> languageList;
 
@@ -33,16 +27,9 @@ class LanguageListData {
 			languageList = new List<LanguageListDataLanguagelist>();(json['LanguageList'] as List).forEach((v) { languageList.add(new LanguageListDataLanguagelist.fromJson(v)); });
 		}
 	}
-
-	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		if (this.languageList != null) {
-      data['LanguageList'] =  this.languageList.map((v) => v.toJson()).toList();
-    }
-		return data;
-	}
 }
 
+/// LanguageListDataLanguagelist
 class LanguageListDataLanguagelist {
 	String icoUrl;
 	String standardMsg;
@@ -54,13 +41,5 @@ class LanguageListDataLanguagelist {
 		icoUrl = json['IcoUrl'];
 		standardMsg = json['StandardMsg'];
 		standardCode = json['StandardCode'];
-	}
-
-	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['IcoUrl'] = this.icoUrl;
-		data['StandardMsg'] = this.standardMsg;
-		data['StandardCode'] = this.standardCode;
-		return data;
 	}
 }

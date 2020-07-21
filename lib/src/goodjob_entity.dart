@@ -1,13 +1,20 @@
 ///翻译
 class GoodjobEntity {
+  /// 文档翻译内容
 	String contentDoc;
+	/// 语言list
 	String contentLangs;
+	/// 语言标准码
 	String langCode;
+	/// 更新时间
 	String updatedAt;
 	int lineNum;
+	/// 项目名称
 	String name;
+	/// 创建时间
 	String createdAt;
 	int mid;
+	/// 分类
 	int type;
 	String content;
 	int cid;
@@ -30,20 +37,4 @@ class GoodjobEntity {
 		desc = json['desc'];
 	}
 
-	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['content_doc'] = this.contentDoc;
-		data['content_langs'] = this.contentLangs;
-		data['lang_code'] = this.langCode;
-		data['updated_at'] = this.updatedAt;
-		data['line_num'] = this.lineNum;
-		data['name'] = this.name;
-		data['created_at'] = this.createdAt;
-		data['mid'] = this.mid;
-		data['type'] = this.type;
-		data['content'] = this.content;
-		data['cid'] = this.cid;
-		data['desc'] = this.desc;
-		return data;
-	}
 }
