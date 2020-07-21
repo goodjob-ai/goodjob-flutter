@@ -6,10 +6,10 @@ import 'package:dio/dio.dart';
 import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:flutter/widgets.dart';
 import 'package:crypto/crypto.dart';
-import 'package:goodjob_flutter/src/api.dart';
-import 'package:goodjob_flutter/src/log_utils.dart';
-import 'package:goodjob_flutter/src/response.dart';
-import 'package:goodjob_flutter/src/config.dart';
+import 'package:goodjob_language/src/api.dart';
+import 'package:goodjob_language/src/log_utils.dart';
+import 'package:goodjob_language/src/response.dart';
+import 'package:goodjob_language/src/config.dart';
 /// 监听当前的网络请求状态，根据状态显示一些必要提醒
 
 /*Options options = Options(

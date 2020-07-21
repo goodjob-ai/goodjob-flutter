@@ -1,9 +1,6 @@
-import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
-import 'package:goodjob_flutter/src/business.dart';
-import 'package:goodjob_flutter/goodjob_flutter.dart';
-import 'package:goodjob_flutter/src/log_utils.dart';
+import 'package:goodjob_language/src/business.dart';
+import 'package:goodjob_language/goodjob_language.dart';
+import 'package:goodjob_language/src/log_utils.dart';
 import 'package:path/path.dart';
 import 'package:quiver/cache.dart';
 import 'package:sqflite/sqflite.dart';

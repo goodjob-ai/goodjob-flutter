@@ -1,12 +1,12 @@
-import 'package:goodjob_flutter/src/goodjob_entity.dart';
-import 'package:goodjob_flutter/src/language_entity.dart';
-import 'package:goodjob_flutter/src/http_util.dart';
-import 'package:goodjob_flutter/src/log_utils.dart';
+import 'package:goodjob_language/src/goodjob_entity.dart';
+import 'package:goodjob_language/src/language_entity.dart';
+import 'package:goodjob_language/src/http_util.dart';
+import 'package:goodjob_language/src/log_utils.dart';
 import 'package:quiver/cache.dart';
-import 'package:goodjob_flutter/src/config.dart';
-import 'package:goodjob_flutter/src/database_helper.dart';
-import 'package:goodjob_flutter/src/response.dart';
-import 'package:goodjob_flutter/src/api.dart';
+import 'package:goodjob_language/src/config.dart';
+import 'package:goodjob_language/src/database_helper.dart';
+import 'package:goodjob_language/src/response.dart';
+import 'package:goodjob_language/src/api.dart';
 ///事务管理器
 class GoodJobBusiness {
   // ignore: missing_return
