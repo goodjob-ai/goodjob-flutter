@@ -1,19 +1,18 @@
+[English](./README.md)
 
-[中文](./README_CN.md)
+# 账号注册及申请
 
-# Account registration
+1.登陆 [https://goodjob.ai/](https://goodjob.ai/) 申请成为开发者
 
-1.Please log in [https://goodjob.ai/](https://goodjob.ai/) apply to be a developer
+2.面板栏选择创建新项目
 
-2.The panel bar choose to create a new project
+![图片](https://uploader.shimo.im/f/vSPBAoU7br7HdPwT.png!thumbnail)
 
-![img](https://uploader.shimo.im/f/vSPBAoU7br7HdPwT.png!thumbnail)
+3.个人中心查看生成的 apiKey 和 apiSecret.
 
-3.View the generated apiKey and apiSecret personal center.
+# SDK-Flutter集成
 
-# SDK-Flutter
-
-## Method
+## 集成方式
 
 ```
 dependencies:
@@ -21,9 +20,9 @@ dependencies:
 
 ```
 
-## Use
+## 功能使用
 
-1. init sdk 
+1. 初始化 sdk 
 ```plain
 GoodJobBusiness _business = GoodJobBusiness.getInstance();
 var res =  await _business.initSDK(
@@ -33,35 +32,35 @@ var res =  await _business.initSDK(
      isDebug: true);
     
 ```
-2. Get results for translation
+2. 获取翻译结果
 
-KeyName needs and goodjob configuration with the name of the one to one correspondence, 
-such as the need to modify please operate in the background, Chinese by default
+keyName需要和 goodjob 配置的名称一一对应，如需修改请在后台操作，默认中文
 
 ```plain
 var res = await _business.interpret(keyName);
 ```
-Switch language
+切换语言
 ```plain
 _business.switchLanguage(language: lang);
 ```
-To obtain a list has added languages
+获取已添加语言列表
 ```plain
 _business.getLanguageList();
 ```
-## More
+## 其它功能
 
-If you want to control the state of the global change, 
-it is suggested that local manually import the provider library
+如果想控制全局状态的变更，建议本地手动导入 provider 库
+
 ```plain
 dependencies:
   provider: ^4.0.5
 ```
-[Provider document](https://pub.dev/packages/provider)
+文档provider官方文档
+[https://pub.dev/packages/provider](https://pub.dev/packages/provider)
 
-In order to 4.0.5 As an example：
+example以4.0.5为例：
 
-1. define Counter 
+1. 定义 Counter 文件
 
 ```plain
 class Counter with ChangeNotifier,DiagnosticableTreeMixin{
@@ -77,7 +76,7 @@ class Counter with ChangeNotifier,DiagnosticableTreeMixin{
   }  
 }
 ```
-2. Modify the App in the main entrance
+2. 修改 main 中 App 入口
 
 ```plain
 void main() {
@@ -89,7 +88,7 @@ void main() {
   ));
 }
 ```
-3. use
+3. 使用
 
 ```plain
 Text('${Provider.of<Counter>(context).key10}')
