@@ -8,7 +8,7 @@
 
 2.面板栏选择创建新项目
 
-![goodjob](https://github.com/goodjob-ai/goodjob-flutter/blob/master/goodjob-CH.png)
+![goodjob](https://github.com/goodjob-ai/goodjob-flutter/blob/master/goodjob-CH.png?raw=true)
 
 3.个人中心查看生成的 apiKey 和 apiSecret.
 
