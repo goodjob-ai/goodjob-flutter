@@ -1,4 +1,6 @@
 
+![goodjob](https://goodjob.ai/img/logo.a4108e28.svg)
+
 [中文](./README_CN.md)
 
 # Account registration
