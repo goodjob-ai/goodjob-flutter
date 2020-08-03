@@ -9,7 +9,7 @@
 
 2.The panel bar choose to create a new project
 
-![img](https://uploader.shimo.im/f/vSPBAoU7br7HdPwT.png!thumbnail)
+![goodjob](https://github.com/goodjob-ai/goodjob-flutter/blob/master/goodjob.png)
 
 3.View the generated apiKey and apiSecret personal center.
 

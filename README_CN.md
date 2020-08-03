@@ -1,3 +1,5 @@
+![goodjob](https://goodjob.ai/img/logo.a4108e28.svg)
+
 [English](./README.md)
 
 # 账号注册及申请
@@ -6,7 +8,7 @@
 
 2.面板栏选择创建新项目
 
-![图片](https://uploader.shimo.im/f/vSPBAoU7br7HdPwT.png!thumbnail)
+![goodjob](https://github.com/goodjob-ai/goodjob-flutter/blob/master/goodjob-CH.png)
 
 3.个人中心查看生成的 apiKey 和 apiSecret.
 
