@@ -52,9 +52,9 @@ class HttpUtil {
     String timestamp =
         (DateTime.now().millisecondsSinceEpoch ~/ 1000).toString();
     //从服务器获取时间戳
-    var timeData = await _dio.get("https://xmtest.anmaicloud.com/time");
+    var timeData = await Dio().get("https://api.goodjob.ai/time");
     if (timeData != null && jsonDecode(timeData.toString())["data"] != null) {
-      timestamp = jsonDecode(timeData.toString())["data"].toString();
+      timestamp = jsonDecode(timeData.toString())["data"]['timestamp'].toString();
     }
     String keyName = 'tokenGET/$url$timestamp';
     //加密
@@ -82,6 +82,7 @@ class HttpUtil {
             code: -1, status: "服务器错误:${_response.statusMessage}");
       }
     } on DioError catch (e) {
+      LogUtil.v(e);
       _entity = new ResponseEntity(code: -1, status: "请求出错：${e.toString()}");
     }
     LogUtil.v("${Api.baseUrl}$url------" + _entity.toString());

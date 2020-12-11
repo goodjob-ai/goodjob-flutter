@@ -61,9 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
   ///初始化sdk
   _requestPermission() async {
    var res =  await _business.initSDK(
-        apiKey: "b59f1ecd-a92a-4f3f-9340-fcaaef411bd1",
-        apiSecret: "c7ea7d5a-15ae-4ef2-ae76-d845d75d6d30",
-        id: '10133',
+        apiKey: "66f27cfb-bf47-4b6a-971f-2df147cebbfb",
+        apiSecret: "f03ebe480ea8dae2ca441894b8875c19",
+        id: '10908',
         isDebug: true);
    //设置默认语言
     Provider.of<Counter>(context, listen: false).initCounter(lang: "en");

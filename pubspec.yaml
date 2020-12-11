@@ -1,7 +1,7 @@
 name: goodjob_language
 description: Goodjob-SDk is designed to meet the needs of international translation. It synchronizes
  the translation results to the application with a key configuration, so that developers no longer need to focus on the translation and writing of copywriting during the development process, and can put more energy into research and development
-version: 1.0.3+1
+version: 1.0.4
 homepage: https://github.com/goodjob-ai/goodjob-flutter.git
 
 environment:

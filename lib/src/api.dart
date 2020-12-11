@@ -1,7 +1,7 @@
 ///接口
 class Api {
   /// base
-  static String baseUrl = "https://xmtest.anmaicloud.com/";
+  static String baseUrl = "https://api.goodjob.ai/";
 
   ///语言列表
   static String languageList = "trans/v1/check/standard";
