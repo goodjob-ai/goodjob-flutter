@@ -2,6 +2,32 @@
 
 [English](./README.md)
 
+
+## 产品介绍
+
+Goodjob-SDK是为了满足国际化翻译，实现了一键配置翻译结果同步到应用上，使开发者在开发过程中不再需要关注于文案的翻译和撰写，能将更大的精力放在研发上。
+
+![图片](https://uploader.shimo.im/f/YumH28VoczjqX4FY.png!thumbnail)
+
+## Demo体验
+
+点击链接下载体验[https://github.com/orth/goodjob_flutter/blob/master/example/app-release.apk](https://github.com/orth/goodjob_flutter/blob/master/example/app-release.apk)
+
+## 功能说明
+
+| 功能点   | 功能说明   | 
+|:----|:----|
+| 国家语言   | 支持40多重国家语言获取   | 
+| 语言切换   | 国际化语言一键切换   | 
+| 翻译   | 切换语言自动本地翻译，无需调用网络 | 
+
+## 使用场景
+
+【场景描述】在flutter应用中，要实现国际化，往往需要集成第三方插件，并且在本地创建多个语言多json文件，然后利用插件生成对应的国际化语法文件，同时还需要在项目里添加相关配置。
+
+【使用流程】在网站申请完开发者账号后，就可以创建项目，在后台一目了然的看到所有项目的语言文档翻译，并且支持多人编辑，共享导出等。app端只需要集成sdk，无需关注其它，只需要在后台拿到对应的文本 key ，通过sdk的查询方法即可拿到对应的文本。
+
+
 # 账号注册及申请
 
 1.登陆 [https://goodjob.ai/](https://goodjob.ai/) 申请成为开发者
