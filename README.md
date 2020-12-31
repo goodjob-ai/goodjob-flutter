@@ -3,7 +3,7 @@
 
 [中文](./README_CN.md)
 
-## product description
+## Product Description
 
 Goodjob-SDK is to meet the needs of international translation and realize the synchronization of the translation results of one-click configuration to the application, so that developers no longer need to pay attention to the translation and writing of copywriting during the development process, and can put its volume on research and development.
 
