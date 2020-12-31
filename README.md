@@ -9,17 +9,17 @@ Goodjob-SDK is to meet the needs of international translation and realize the sy
 
 ! [Picture] (https://uploader.shimo.im/f/YumH28VoczjqX4FY.png! Thumbnail)
 
-##Demo experience
+## Demo experience
 
 Click the link to download the experience [https://github.com/orth/goodjob_flutter/blob/master/example/app-release.apk](https://github.com/orth/goodjob_flutter/blob/master/example/app- release.apk)
 
 ## Function Description
 
-|Function Points|Function Description|
-|: ---- | :: ---- |
-|National language|Support more than 40 national language acquisition|
-|Language switching|One-click switching of internationalized languages|
-|Translation|Switch language automatic local translation without calling the network|
+| Function Points | Function Description|
+|: ---- |:: ----|
+| National language | Support more than 40 national language acquisition |
+| Language switching | One-click switching of internationalized languages |
+| Translation|Switch language automatic local translation without calling the network |
 
 ## Scenes
 
