@@ -21,7 +21,7 @@ Click the link to download the experience [https://github.com/orth/goodjob_flutt
 |Language switching|One-click switching of internationalized languages|
 |Translation|Switch language automatic local translation without calling the network|
 
-## scenes
+## Scenes
 
 [Scene description] In flutter application, to achieve internationalization, it is usually necessary to integrate third-party plug-ins, and create multiple languages ​​and multi-json files locally, and then use plug-ins to generate corresponding internationalized grammar files, and also need to be added to the project Related configuration.
 
