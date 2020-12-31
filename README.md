@@ -3,17 +3,17 @@
 
 [中文](./README_CN.md)
 
-## Product Description
+## Product Intro
 
 Goodjob-SDK is to meet the needs of international translation and realize the synchronization of the translation results of one-click configuration to the application, so that developers no longer need to pay attention to the translation and writing of copywriting during the development process, and can put its volume on research and development.
 
 ![Picture](https://uploader.shimo.im/f/YumH28VoczjqX4FY.png!thumbnail)
 
-## Demo experience
+## Demo
 
 Click the link to download the experience [https://github.com/orth/goodjob_flutter/blob/master/example/app-release.apk](https://github.com/orth/goodjob_flutter/blob/master/example/app-release.apk)
 
-## Function Description
+## Detail
 
 | Function   | Description   | 
 |:----|:----|
